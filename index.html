@@ -38,39 +38,15 @@
         });
         function check(){
 
-            // // // horizontal:  0,1,2; 3,4,5; 6,7,8;
-            // if((area[0]+area[1]+area[2])==3){console.log("horizontal first O"); winner=1;}  
-            // if((area[0]+area[1]+area[2])==6){console.log("horizontal first X"); winner=2;}
-
-            // if((area[3]+area[4]+area[5])==3){console.log("horizontal second O"); winner=1;}
-            // if((area[3]+area[4]+area[5])==6){console.log("horizontal second X"); winner=2;}
-
-            // if((area[6]+area[7]+area[8])==3){console.log("horizontal third O"); winner=1;}
-            // if((area[6]+area[7]+area[8])==6){console.log("horizontal third X"); winner=2;}
             var buffer=0;
-            if(turn<10){
+            if(turn<areaSize*3){
                 
                 for(var x=1; x<area.length+1; x++){
-                    // vertical part - first n (n - size of area, by default 3) elements of the array (0,1,2) increase n times by n - 0, 3, 6; 1, 4, 7;
                     var bufferVertical=0;
                     var bufferDiagonal=0;
                     
-                    var test=0;
-                    var testD=0;
-                    if(x<=areaSize){
-                        // diagonal
-                        // var subValue=0;
-                        // if(x==1){subValue=areaSize+1; /*console.log("FIRST ELEMENT, x=1");*/}
-                        // if(x==areaSize){subValue=areaSize-1; /*console.log("LAST ELEMENT, x=3");*/}
-
-                        //console.log("subValue is:" + subValue);
-
-                        // if(subValue!=0){
-                        //     for(var k=x-1; k<=(subValue*areaSize); k+=subValue){bufferDiagonal+=area[k]; /*console.log("k: " +k+" area[x-1+k]: "+area[x-1+k]+" bufferDiagonal is: " + bufferDiagonal);*/}
-                        //     if(bufferDiagonal==3){ winner=2; console.log("winner diagonal: " + winner); reset(); }
-                        //     if(bufferDiagonal==6){ winner=2; console.log("winner diagonal: " + winner); reset(); }
-                        // }
-
+                    if(x<=areaSize)
+                    {
                         // vertical - first n (n - size of area, by default 3) elements of the array (0,1,2) increase n times by n - 0, 3, 6; 1, 4, 7;
                         // 0,1,2 -> 0,3,6 ; 1,4,7 ; 2, 5, 8
                         for(var a=0; a<areaSize; a++){bufferVertical+=area[x-1+a*3]; /*console.log("\n\ntest: " + test + " x-1+a*3: " +(x-1+a*3)+" area[x-1+a*3]: "+area[x-1+a*3]);*/}
@@ -85,60 +61,22 @@
                         if(bufferDiagonal==6||bufferDiagonal==3){access=0; console.log("Winner diagonal"); reset();}
                         
                         
-                        
-
-
-                        // vertical
-                        // for(var j=0; j<7; j+=areaSize){ bufferVertical+=area[x-1+j]; }
-                        
-                        // if(bufferVertical==3){winner=1; console.log("winner vertical: " + winner); reset(); }
-                        // else if(bufferVertical==6){winner=2; console.log("winner vertical: " + winner); reset(); }
                     }
 
                     // horizontal part
                     buffer+=area[x-1];
-                    //console.log("x: "+x+ " buffer: " + buffer);
-                    if(x%areaSize==0){
+                    if(x%areaSize==0)
+                    {
                         if(buffer==3){ winner=1; console.log("winner horizontal: " + winner); reset();}
                         else if(buffer==6){ winner=2; console.log("winner horizontal: " + winner); reset();}
                         buffer=0;
                     }
-                    
-
                 }
-                
-
-                //vertical - first n (n - size of area, by def 3) elements of the array (0,1,2) increase n times by n - 0, 3, 6; 1, 4, 7;
-                //diagonal 
                 
             }
             else {
                 access=0;
             }
-            
-
-
-
-            // // // vertical: 0,3,6; 1,4,7; 2,5,8;
-            // if((area[0]+area[3]+area[6])==3){console.log("vertical first O"); winner=1;}
-            // if((area[0]+area[3]+area[6])==6){console.log("vertical first X"); winner=2;}
-
-            // if((area[1]+area[4]+area[7])==3){console.log("vertical second O"); winner=1;}
-            // if((area[1]+area[4]+area[7])==6){console.log("vertical second X"); winner=2;}
-
-            // if((area[2]+area[5]+area[8])==3){console.log("vertical third O"); winner=1;}
-            // if((area[2]+area[5]+area[8])==6){console.log("vertical third X"); winner=2;}
-
-            // // // diagonal: 0,4,8; 2,4,6;
-            // if((area[0]+area[4]+area[8])==3){console.log("diagonal first O"); winner=1;}
-            // if((area[0]+area[4]+area[8])==6){console.log("diagonal first X"); winner=2;}
-
-            // if((area[2]+area[4]+area[6])==3){console.log("diagonal second O"); winner=1;}
-            // if((area[2]+area[4]+area[6])==6){console.log("diagonal second X"); winner=2;}
-
-
-            // if(winner==1){$(document).ready(function(){ $('p#result').text("O Wins!"); access=0;  });}
-            // else if(winner==2) {$(document).ready(function(){ $('p#result').text("X Wins!"); access=0; });}
 
 
         }
@@ -159,7 +97,7 @@
             //     console.log(area[x-1]);
             //     if(x%3==0){console.log("\n\n");}
             // }
-            console.log(" " + area[0] + " | " + area[1] + " | " + area[2] + " \n");
+        console.log(" " + area[0] + " | " + area[1] + " | " + area[2] + " \n");
         console.log("-----------\n");
         console.log(" "<< area[3] <<" | "<< area[4] <<" | "<< area[5]<<" \n");
         console.log("-----------\n");
